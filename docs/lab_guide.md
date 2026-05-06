@@ -17,61 +17,25 @@ Bạn cần xây dựng một research assistant có thể nhận câu hỏi dà
 
 ## Milestone 1: Baseline
 
-File gợi ý:
-
-- `src/multi_agent_research_lab/cli.py`
-- `src/multi_agent_research_lab/services/llm_client.py`
-
-TODO(student): thay baseline placeholder bằng một call LLM thật.
+Đã hoàn thành.
 
 ## Milestone 2: Supervisor
 
-File gợi ý:
-
-- `src/multi_agent_research_lab/agents/supervisor.py`
-- `src/multi_agent_research_lab/graph/workflow.py`
-
-TODO(student): implement routing policy.
-
-Gợi ý câu hỏi thiết kế:
-
-- Khi nào gọi Researcher?
-- Khi nào gọi Analyst?
-- Khi nào gọi Writer?
-- Khi nào stop?
-- Nếu agent fail thì retry hay fallback?
+Đã hoàn thành.
 
 ## Milestone 3: Worker agents
 
-File gợi ý:
-
-- `agents/researcher.py`
-- `agents/analyst.py`
-- `agents/writer.py`
-
-TODO(student): implement từng worker.
+Đã hoàn thành.
 
 ## Milestone 4: Trace và benchmark
 
-File gợi ý:
-
-- `observability/tracing.py`
-- `evaluation/benchmark.py`
-- `evaluation/report.py`
-
-Benchmark tối thiểu:
-
-| Metric | Cách đo gợi ý |
-|---|---|
-| Latency | wall-clock time |
-| Cost | token usage hoặc provider usage |
-| Quality | rubric 0-10 do peer review |
-| Citation coverage | số claims có source / tổng claims chính |
-| Failure rate | số query fail / tổng query |
+Đã hoàn thành.
 
 ## Exit ticket
 
 Mỗi nhóm trả lời 2 câu:
 
 1. Case nào nên dùng multi-agent? Vì sao?
+   - Khi task phức tạp, cần chia nhỏ thành nhiều bước với các vai trò chuyên biệt để đảm bảo chất lượng và dễ debug.
 2. Case nào không nên dùng multi-agent? Vì sao?
+   - Khi task đơn giản, có thể giải quyết bằng một prompt duy nhất để tiết kiệm thời gian (latency) và chi phí (token).

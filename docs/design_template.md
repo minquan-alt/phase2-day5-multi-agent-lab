@@ -2,37 +2,37 @@
 
 ## Problem
 
-TODO(student): Viết task cụ thể hệ thống cần xử lý.
+Hệ thống cần xử lý: Tìm kiếm thông tin, tổng hợp, phân tích và trả lời câu hỏi dài.
 
 ## Why multi-agent?
 
-TODO(student): Giải thích vì sao single-agent chưa đủ.
+Single agent dễ bị mất focus khi câu hỏi quá dài và cần nhiều bước suy luận, thu thập thông tin. Multi-agent chia nhỏ vấn đề.
 
 ## Agent roles
 
 | Agent | Responsibility | Input | Output | Failure mode |
 |---|---|---|---|---|
-| Supervisor | TODO | TODO | TODO | TODO |
-| Researcher | TODO | TODO | TODO | TODO |
-| Analyst | TODO | TODO | TODO | TODO |
-| Writer | TODO | TODO | TODO | TODO |
+| Supervisor | Điều phối workflow | State | State cập nhật route | Lặp vô hạn |
+| Researcher | Tìm kiếm tài liệu | Query | Sources, notes | Không tìm thấy tài liệu |
+| Analyst | Phân tích thông tin | Sources, notes | Analysis notes | Phân tích sai |
+| Writer | Viết bài trả lời | Analysis notes | Final answer | Viết lan man, thiếu cite |
 
 ## Shared state
 
-TODO(student): Liệt kê fields và lý do cần field đó.
+Các fields chính: `query`, `route_history`, `sources`, `research_notes`, `analysis_notes`, `final_answer`.
 
 ## Routing policy
 
-TODO(student): Vẽ hoặc mô tả graph.
+Workflow tuần tự: Supervisor -> Researcher -> Analyst -> Writer -> Supervisor (done).
 
 ## Guardrails
 
-- Max iterations:
-- Timeout:
-- Retry:
-- Fallback:
-- Validation:
+- Max iterations: 5
+- Timeout: 60s
+- Retry: 3
+- Fallback: Trả về lỗi nếu fail
+- Validation: Schema Pydantic
 
 ## Benchmark plan
 
-TODO(student): Liệt kê query, metric, expected outcome.
+So sánh Quality, Latency, Cost giữa Single-agent và Multi-agent.

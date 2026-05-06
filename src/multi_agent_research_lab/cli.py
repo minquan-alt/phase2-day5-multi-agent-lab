@@ -31,10 +31,10 @@ def baseline(
     _init()
     request = ResearchQuery(query=query)
     state = ResearchState(request=request)
-    state.final_answer = (
-        "Baseline skeleton response. TODO(student): replace this with a real single-agent "
-        "implementation and record latency/cost/quality metrics."
-    )
+    from multi_agent_research_lab.services.llm_client import LLMClient
+    llm_client = LLMClient()
+    response = llm_client.complete("You are a single-agent researcher.", query)
+    state.final_answer = response.content
     console.print(Panel.fit(state.final_answer, title="Single-Agent Baseline"))
 
 

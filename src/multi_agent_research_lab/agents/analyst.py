@@ -11,9 +11,14 @@ class AnalystAgent(BaseAgent):
     name = "analyst"
 
     def run(self, state: ResearchState) -> ResearchState:
-        """Populate `state.analysis_notes`.
-
-        TODO(student): Extract key claims, compare viewpoints, and flag weak evidence.
-        """
-
-        raise StudentTodoError("TODO(student): implement AnalystAgent.run")
+        """Populate `state.analysis_notes`."""
+        from multi_agent_research_lab.services.llm_client import LLMClient
+        llm_client = LLMClient()
+        
+        system_prompt = "You are an analyst extracting key claims."
+        user_prompt = f"Analyze these notes: {state.research_notes}"
+        response = llm_client.complete(system_prompt, user_prompt)
+        
+        state.analysis_notes = response.content
+        state.total_cost_usd += response.cost_usd or 0.0
+        return state
